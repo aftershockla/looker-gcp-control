@@ -280,6 +280,11 @@ view: bigquery_data_access_authentication_info {
     sql: ${TABLE}.authoritySelector ;;
   }
 
+  dimension: user {
+    type: string
+    sql: SUBSTR(${TABLE}.principalEmail, 1, STRPOS(${TABLE}.principalEmail, '@') - 1) ;;
+  }
+
   dimension: user_id {
     label: "User ID"
     type: string
