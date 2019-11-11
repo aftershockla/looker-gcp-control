@@ -6,6 +6,7 @@ view: bigquery_data_access {
       FROM
         `stackdriver.cloudaudit_googleapis_com_data_access_*`
       WHERE
+        _table_suffix BETWEEN '19700101' AND '29991231' AND
         {% condition date_filter %} PARSE_TIMESTAMP('%E4Y%m%d', _TABLE_SUFFIX) {% endcondition %} ;;
   }
 
